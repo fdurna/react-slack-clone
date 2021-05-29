@@ -74,6 +74,7 @@ function Messages(props) {
     setSearchResult(newSearchResults)
   }
   useEffect(getListeners, [])
+  
   return (
     <div>
     <MessagesHeader
