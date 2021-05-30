@@ -42,7 +42,8 @@ function MessagesForm(props) {
         }
         return message;
     }
-    const sendMessage = () => {
+    const sendMessage = (e) => {
+        e.preventDefault();
         const channel = props.currentChannel
         const message = messagesForm.messages
         if (message) {
@@ -73,6 +74,7 @@ function MessagesForm(props) {
     }, [messagesForm]);
     return (
         <Segment className="messages__form">
+            <form onSubmit={sendMessage}>
             <Input
                 fluid
                 name="messages"
@@ -85,14 +87,15 @@ function MessagesForm(props) {
             />
             <Button.Group icon widths="2">
                 <Button
+                    type="submit"
                     color="orange"
                     content="Add Reply"
                     labelPosition="left"
                     icon="edit"
                     disabled={messagesForm.loading}
-                    onClick={sendMessage}
                 />
             </Button.Group>
+            </form>
         </Segment>
     )
 }
