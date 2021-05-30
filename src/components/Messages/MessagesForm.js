@@ -69,6 +69,7 @@ function MessagesForm(props) {
         }
     }
     useEffect(() => {
+        document.querySelector('.ui.comments.messages').scrollTop = document.querySelector('.ui.comments.messages').scrollHeight
     }, [messagesForm]);
     return (
         <Segment className="messages__form">
