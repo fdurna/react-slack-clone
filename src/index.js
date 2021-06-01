@@ -40,9 +40,9 @@ class Root extends Component {
   render() {
     return this.props.isLoading ? <Spinner /> :  (
       <Switch>
-        <Route exact path="/" component={App} />
         <Route path="/register" component={Register} />
         <Route path="/login" component={Login} />
+        <Route exact path="/" component={App} />
       </Switch>
     )
   }

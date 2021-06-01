@@ -25,6 +25,7 @@ function DirectMessages(props) {
                     ...directMessages,
                     users: loadedUser
                 })
+                console.log(directMessages.users)
             }
         })
         directMessages.connectedRef.on('value',snap => {
@@ -38,17 +39,18 @@ function DirectMessages(props) {
                 })
             }
         })
-        directMessages.presenceRef.on('child_added',snap => {
-            if(currentUserUid !== snap.key){
-                addStatusToUser(snap.key)
-            }
-        })
-
         directMessages.presenceRef.on('child_moved', snap => {
             if(currentUserUid !== snap.key){
                 addStatusToUser(snap.key, false);
             }
         })
+        /*
+        directMessages.presenceRef.on('child_added',snap => {
+            if(currentUserUid !== snap.key){
+                addStatusToUser(snap.key)
+            }
+        })
+        */
     }
     
     const addStatusToUser = (userId,connected = true) => {
@@ -89,7 +91,7 @@ function DirectMessages(props) {
         if (user) {
             addListeners(user.uid)
         }
-      }
+    }
     useEffect(getListeners,[])
     return (
         <Menu.Menu className="menu">
