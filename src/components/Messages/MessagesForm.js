@@ -79,8 +79,6 @@ function MessagesForm(props) {
                 fluid
                 name="messages"
                 style={{ marginBottom: '0.7em' }}
-                label={<Button icon={'add'} />}
-                labelPosition="left"
                 placeholder="Write your message"
                 value={messagesForm.messages}
                 onChange={handleInputChange}

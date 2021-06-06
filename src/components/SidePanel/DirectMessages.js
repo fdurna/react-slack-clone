@@ -44,13 +44,6 @@ function DirectMessages(props) {
                 addStatusToUser(snap.key, false);
             }
         })
-        /*
-        directMessages.presenceRef.on('child_added',snap => {
-            if(currentUserUid !== snap.key){
-                addStatusToUser(snap.key)
-            }
-        })
-        */
     }
     
     const addStatusToUser = (userId,connected = true) => {
@@ -66,8 +59,6 @@ function DirectMessages(props) {
         })
     }
 
-    const isUserOnline = user => user.status === 'online'
-
     const changeChannel = user => {
         const channelId = getChannelId(user.uid);
         const channelData = {
@@ -82,10 +73,6 @@ function DirectMessages(props) {
 
     const getChannelId = userId => {
         return userId;
-        /*
-        const currentUserId = directMessages.user.uid
-        return userId < currentUserId ? `${userId}/${currentUserId}` : `${currentUserId}/${userId}`
-        */
     }
     const getListeners = () => {
         if (user) {
@@ -108,12 +95,8 @@ function DirectMessages(props) {
                         active={user.uid === activeChannel}
                         onClick={() => changeChannel(user)}
                         style={{opacity:0.7,fontStyle:'italic'}}
-                    >
-                        <Icon 
-                            name="circle"
-                            color={isUserOnline(user) ? 'green' : 'red'}
-                        />
-                        @ {user.name}
+                        >
+                        @{user.name}
                     </Menu.Item>
                 ))
             }
